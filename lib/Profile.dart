@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/Preview.dart';
 
 List<String> art_images = [
   "https://images.saatchiart.com/saatchi/833929/art/8855790/7919158-BGDDFYXM-6.jpg",
   "https://www.artmajeur.com/medias/standard/p/o/pooviartgallery/artwork/10107421_il-570xn-1029384179-fasv.jpg",
-  "https://i.pinimg.com/736x/3b/7f/2d/3b7f2dd0fb51de6853ebbd22b6185a10.jpg",
+  "https://cdn.shopify.com/s/files/1/0054/2887/1268/files/Wassily_Kandinsky_Improvisation_31_Sea_Battle_1024x1024.jpg?v=1589816835",
   "https://images.saatchiart.com/saatchi/850336/art/7858298/6926142-UJBKHPPG-7.jpg"
 ];
 
@@ -21,13 +22,13 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 50, left: 19, right: 19),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const BackButton(color: Color.fromARGB(255, 0, 0, 0)),
+                    const BackButton(),
                     PopupMenuButton<String>(onSelected: (value) {
                       print(value);
                     }, itemBuilder: ((contexts) {
@@ -44,7 +45,7 @@ class _ProfileState extends State<Profile> {
                   Stack(alignment: Alignment(0.9, -1), children: const [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                          "https://i.pinimg.com/originals/c2/7f/4c/c27f4ce431471238a8ac08de609a3e24.jpg"),
+                          "https://i.pinimg.com/originals/a3/be/17/a3be177eacedf5546ca26d01d8e7d961.png"),
                       radius: 60,
                       backgroundColor: Colors.yellow,
                     ),
@@ -89,9 +90,10 @@ class _ProfileState extends State<Profile> {
                       width: 130,
                       height: 35,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 212, 227),
+                          color: const Color.fromARGB(255, 255, 212, 227),
                           border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(30))),
                       child: const Text(
                         "0x1h78......f5h9",
                         style: TextStyle(
@@ -167,18 +169,31 @@ class _ProfileState extends State<Profile> {
                         childAspectRatio: 1,
                         children: List.generate(4, (index) {
                           return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.black, width: 2),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: SizedBox.fromSize(
-                                child: Image.network(art_images[index],
-                                    fit: BoxFit.cover),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                border:
+                                    Border.all(color: Colors.black, width: 2),
                               ),
-                            ),
-                          );
+                              child: GestureDetector(
+                                onTap: () {
+                                  print("Image opened");
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Preview(image: art_images[index])),
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: SizedBox.fromSize(
+                                    child: Image.network(
+                                      art_images[index],
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                              ));
                         })))
               ],
             )));
