@@ -55,7 +55,7 @@ class _PreviewState extends State<Preview> {
           Stack(
             children: [
               Container(
-                  height: MediaQuery.of(context).size.height * 0.8175,
+                  height: MediaQuery.of(context).size.height - 158,
                   width: MediaQuery.of(context).size.width * 0.99,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2),
@@ -65,7 +65,7 @@ class _PreviewState extends State<Preview> {
                     children: [
                       Container(
                           width: MediaQuery.of(context).size.width * 0.9875,
-                          height: MediaQuery.of(context).size.height * 0.8175,
+                          height: MediaQuery.of(context).size.height - 158,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(30.0),
                             child: Image.network(
