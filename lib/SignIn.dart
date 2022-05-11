@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/auth.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _authService = new AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +180,17 @@ class _SignInState extends State<SignIn> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(30))),
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  dynamic result =
+                                      await _authService.signInAnon();
+
+                                  if (result == null) {
+                                    print("error signing in");
+                                  } else {
+                                    print('Signed in');
+                                    print(result);
+                                  }
+                                },
                                 child: const Text(
                                   "Log in",
                                   style: TextStyle(
