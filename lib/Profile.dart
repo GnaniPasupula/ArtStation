@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/Preview.dart';
+import 'package:portfolio/SignIn.dart';
 
 List<String> art_images = [
   "https://images.saatchiart.com/saatchi/833929/art/8855790/7919158-BGDDFYXM-6.jpg",
@@ -31,33 +32,43 @@ class _ProfileState extends State<Profile> {
                     const BackButton(),
                     PopupMenuButton<String>(onSelected: (value) {
                       print(value);
+                      if (value == "Logout") {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                      }
                     }, itemBuilder: ((contexts) {
                       return [
                         const PopupMenuItem(
                           value: "Settings",
                           child: Text('Settings'),
+                        ),
+                        const PopupMenuItem(
+                          value: "Logout",
+                          child: Text('Logout'),
                         )
                       ];
                     }))
                   ],
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Stack(alignment: Alignment(0.9, -1), children: const [
-                    CircleAvatar(
+                  Stack(alignment: Alignment(0.9, -1), children: [
+                    const CircleAvatar(
                       backgroundImage: NetworkImage(
                           "https://i.pinimg.com/originals/a3/be/17/a3be177eacedf5546ca26d01d8e7d961.png"),
                       radius: 60,
-                      backgroundColor: Colors.yellow,
+                      backgroundColor: Color.fromARGB(255, 253, 199, 49),
                     ),
-                    Icon(
-                      hexagon,
-                      color: Colors.greenAccent,
-                      size: 40,
-                    ),
-                    Icon(
-                      Icons.check,
-                      color: Colors.white,
-                    )
+                    Stack(alignment: Alignment.center, children: const [
+                      Icon(
+                        hexagon,
+                        color: Colors.greenAccent,
+                        size: 40,
+                      ),
+                      Icon(
+                        Icons.check,
+                        color: Colors.white,
+                      )
+                    ])
                   ])
                 ]),
                 const Divider(
