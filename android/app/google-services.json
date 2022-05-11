@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "753216266140",
+    "project_id": "flutterartstation",
+    "storage_bucket": "flutterartstation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753216266140:android:9da19df144e6a26e657259",
+        "android_client_info": {
+          "package_name": "com.example.portfolio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753216266140-bfn80b1o8j9c5v8a1afnk78rh9rhn85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ-HcG13dBVuhvWGd1img4UZig8X9s_sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753216266140-bfn80b1o8j9c5v8a1afnk78rh9rhn85d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
