@@ -8,7 +8,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthService _authService = new AuthService();
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,14 +181,13 @@ class _SignInState extends State<SignIn> {
                                       Radius.circular(30))),
                               child: TextButton(
                                 onPressed: () async {
-                                  dynamic result =
-                                      await _authService.signInAnon();
+                                  dynamic result = await _auth.signInAnon();
 
                                   if (result == null) {
                                     print("error signing in");
                                   } else {
                                     print('Signed in');
-                                    print(result);
+                                    print(result.uid);
                                   }
                                 },
                                 child: const Text(
