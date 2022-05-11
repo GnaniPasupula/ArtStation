@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Profile.dart';
 import 'package:portfolio/Search.dart';
-import 'package:portfolio/wrapper.dart';
-import 'Work.dart';
+import 'package:portfolio/Work.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Wrapper(),
+      home: MyStatefulWidget(),
     );
   }
 }
