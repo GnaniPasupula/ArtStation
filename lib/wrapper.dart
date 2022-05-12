@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:portfolio/Home.dart';
 import 'package:portfolio/Models/user.dart';
-import 'package:portfolio/SignIn.dart';
+import 'package:portfolio/authenticate.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -11,7 +11,7 @@ class Wrapper extends StatelessWidget {
     print(user);
 
     if (user == null) {
-      return SignIn();
+      return Authenticate();
     } else {
       return Home();
     }

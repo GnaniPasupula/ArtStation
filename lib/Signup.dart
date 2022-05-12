@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Signup extends StatefulWidget {
   final Function toggleView;
-  SignIn({required this.toggleView});
+  Signup({required this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _SignupState createState() => _SignupState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignupState extends State<Signup> {
   final AuthService _auth = AuthService();
 
   String email = "";
@@ -237,19 +237,17 @@ class _SignInState extends State<SignIn> {
                                           Radius.circular(30))),
                                   child: TextButton(
                                     onPressed: () async {
-                                      //dynamic result = await _auth.signInAnon();
+                                      //dynamic result = await _auth.SignupAnon();
 
                                       // if (result == null) {
-                                      //   print("error signing in");
+                                      //   print("error Signupg in");
                                       // } else {
                                       //   print('Signed in');
                                       //   print(result.uid);
                                       // }
-                                      print(email);
-                                      print(password);
                                     },
                                     child: const Text(
-                                      "Log in",
+                                      "Sign up",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -265,7 +263,7 @@ class _SignInState extends State<SignIn> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text("Don't have an account?",
+                            const Text("Have an account?",
                                 style: TextStyle(
                                     fontSize: 15, color: Colors.grey)),
                             TextButton(
@@ -273,7 +271,7 @@ class _SignInState extends State<SignIn> {
                                   widget.toggleView();
                                 },
                                 child: const Text(
-                                  "Sign up",
+                                  "Sign in",
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       color: Color.fromARGB(255, 255, 212, 227),
