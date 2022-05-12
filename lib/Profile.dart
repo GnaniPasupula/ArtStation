@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/Preview.dart';
 import 'package:portfolio/SignIn.dart';
+import 'package:portfolio/auth.dart';
 
 List<String> art_images = [
   "https://images.saatchiart.com/saatchi/833929/art/8855790/7919158-BGDDFYXM-6.jpg",
@@ -19,6 +20,8 @@ class _ProfileState extends State<Profile> {
   static const IconData hexagon =
       IconData(0xf0517, fontFamily: 'MaterialIcons');
 
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +36,8 @@ class _ProfileState extends State<Profile> {
                     PopupMenuButton<String>(onSelected: (value) {
                       print(value);
                       if (value == "Logout") {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                        print("signed out");
+                        _auth.signout();
                       }
                     }, itemBuilder: ((contexts) {
                       return [

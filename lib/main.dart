@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/Models/user.dart';
+import 'package:portfolio/auth.dart';
 import 'package:portfolio/wrapper.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,8 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Wrapper(),
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
+      ),
     );
   }
 }
