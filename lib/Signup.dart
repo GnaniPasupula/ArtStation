@@ -16,6 +16,7 @@ class _SignUpState extends State<SignUp> {
 
   String email = "";
   String password = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -236,43 +237,57 @@ class _SignUpState extends State<SignUp> {
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.grey)),
                               Container(
-                                  width: MediaQuery.of(context).size.width *
-                                      0.75 /
-                                      2,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.15 /
-                                      3,
-                                  decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 253, 199, 49),
-                                      border: Border.all(color: Colors.black),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(30))),
-                                  child: TextButton(
-                                    onPressed: () async {
-                                      //dynamic result = await _auth.SignUpAnon();
+                                width: MediaQuery.of(context).size.width *
+                                    0.75 /
+                                    2,
+                                height: MediaQuery.of(context).size.height *
+                                    0.15 /
+                                    3,
+                                decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromARGB(255, 253, 199, 49),
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(30))),
+                                child: TextButton(
+                                  onPressed: () async {
+                                    //dynamic result = await _auth.SignUpAnon();
 
-                                      // if (result == null) {
-                                      //   print("error SignUpg in");
-                                      // } else {
-                                      //   print('Signed in');
-                                      //   print(result.uid);
-                                      // }
-                                      if (_formKey.currentState!.validate()) {
-                                        print(email);
-                                        print(password);
+                                    // if (result == null) {
+                                    //   print("error SignUpg in");
+                                    // } else {
+                                    //   print('Signed in');
+                                    //   print(result.uid);
+                                    // }
+                                    if (_formKey.currentState!.validate()) {
+                                      // print(email);
+                                      // print(password);
+                                      dynamic result = await _auth
+                                          .registerWithEmailAndPassword(
+                                              email, password);
+                                      if (result == null) {
+                                        setState(() {
+                                          error = "Please enter a valid email";
+                                        });
                                       }
-                                    },
-                                    child: const Text(
-                                      "Sign up",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                      ),
+                                    }
+                                  },
+                                  child: const Text(
+                                    "Sign up",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
                                     ),
-                                  ))
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          error,
+                          style: TextStyle(color: Colors.red, fontSize: 15),
                         ),
                         const SizedBox(
                           height: 30,
