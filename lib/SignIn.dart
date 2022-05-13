@@ -52,7 +52,7 @@ class _SignInState extends State<SignIn> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Text("Login",
+                              Text("Sign In",
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold))
@@ -249,7 +249,7 @@ class _SignInState extends State<SignIn> {
                                       print(password);
                                     },
                                     child: const Text(
-                                      "Log in",
+                                      "Sign in",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,

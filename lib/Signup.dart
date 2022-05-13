@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/auth.dart';
 
-class Signup extends StatefulWidget {
+class SignUp extends StatefulWidget {
   final Function toggleView;
-  Signup({required this.toggleView});
+  SignUp({required this.toggleView});
 
   @override
-  _SignupState createState() => _SignupState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _SignupState extends State<Signup> {
+class _SignUpState extends State<SignUp> {
   final AuthService _auth = AuthService();
+
+  final _formKey = GlobalKey<FormState>();
 
   String email = "";
   String password = "";
@@ -52,7 +54,7 @@ class _SignupState extends State<Signup> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Text("Login",
+                              Text("Sign Up",
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold))
@@ -60,149 +62,160 @@ class _SignupState extends State<Signup> {
                         const SizedBox(
                           height: 40,
                         ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                width: MediaQuery.of(context).size.width * 0.75,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: Colors.black, width: 2),
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.white,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          alignment: Alignment.center,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color.fromARGB(
-                                                255, 255, 212, 227),
-                                          ),
-                                          child: const Icon(
-                                            Icons.person_outline,
-                                            color: Color.fromARGB(
-                                                255, 255, 175, 203),
-                                          ),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.75 /
-                                              2,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.15 /
-                                              3,
-                                          child: TextFormField(
-                                            onChanged: (value) {
-                                              setState(() {
-                                                email = value;
-                                              });
-                                            },
-                                            cursorColor: const Color.fromARGB(
-                                                255, 255, 175, 203),
-                                            decoration: const InputDecoration(
-                                              hintStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey),
-                                              border: InputBorder.none,
-                                              hintText: "gnani@email.com",
+                        Form(
+                          key: _formKey,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.75,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 2),
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.center,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color.fromARGB(
+                                                  255, 255, 212, 227),
                                             ),
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.grey),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Divider(
-                                        height: 10, color: Colors.grey),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          alignment: Alignment.center,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color.fromARGB(
-                                                255, 253, 199, 49),
-                                          ),
-                                          child: const Icon(
-                                            Icons.lock_outline,
-                                            color: Color.fromARGB(
-                                                255, 253, 225, 75),
-                                          ),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.75 -
-                                              78,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.15 /
-                                              3,
-                                          child: TextFormField(
-                                            obscureText: true,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                password = value;
-                                              });
-                                            },
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.grey),
-                                            cursorColor: const Color.fromARGB(
-                                                255, 253, 225, 75),
-                                            decoration: const InputDecoration(
-                                              hintStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey),
-                                              border: InputBorder.none,
-                                              hintText: "*********",
+                                            child: const Icon(
+                                              Icons.person_outline,
+                                              color: Color.fromARGB(
+                                                  255, 255, 175, 203),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          const SizedBox(width: 10),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.75 /
+                                                2,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.15 /
+                                                3,
+                                            child: TextFormField(
+                                              validator: (val) => val!.isEmpty
+                                                  ? "Enter an email"
+                                                  : null,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  email = value;
+                                                });
+                                              },
+                                              cursorColor: const Color.fromARGB(
+                                                  255, 255, 175, 203),
+                                              decoration: const InputDecoration(
+                                                hintStyle: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
+                                                border: InputBorder.none,
+                                                hintText: "gnani@email.com",
+                                              ),
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.grey),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const Divider(
+                                          height: 10, color: Colors.grey),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.center,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color.fromARGB(
+                                                  255, 253, 199, 49),
+                                            ),
+                                            child: const Icon(
+                                              Icons.lock_outline,
+                                              color: Color.fromARGB(
+                                                  255, 253, 225, 75),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.75 -
+                                                78,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.15 /
+                                                3,
+                                            child: TextFormField(
+                                              validator: (val) => val!.length <
+                                                      6
+                                                  ? "Enter a password of 6+ chars"
+                                                  : null,
+                                              obscureText: true,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  password = value;
+                                                });
+                                              },
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.grey),
+                                              cursorColor: const Color.fromARGB(
+                                                  255, 253, 225, 75),
+                                              decoration: const InputDecoration(
+                                                hintStyle: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
+                                                border: InputBorder.none,
+                                                hintText: "*********",
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ]),
+                              ]),
+                        ),
                         const SizedBox(
                           height: 30,
                         ),
@@ -237,14 +250,18 @@ class _SignupState extends State<Signup> {
                                           Radius.circular(30))),
                                   child: TextButton(
                                     onPressed: () async {
-                                      //dynamic result = await _auth.SignupAnon();
+                                      //dynamic result = await _auth.SignUpAnon();
 
                                       // if (result == null) {
-                                      //   print("error Signupg in");
+                                      //   print("error SignUpg in");
                                       // } else {
                                       //   print('Signed in');
                                       //   print(result.uid);
                                       // }
+                                      if (_formKey.currentState!.validate()) {
+                                        print(email);
+                                        print(password);
+                                      }
                                     },
                                     child: const Text(
                                       "Sign up",
