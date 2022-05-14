@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Profile.dart';
 import 'package:portfolio/Search.dart';
+import 'package:portfolio/Upload.dart';
 import 'package:portfolio/Work.dart';
 
 class Home extends StatelessWidget {
@@ -70,14 +71,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: DefaultTabController(
         length: 5,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: TabBarView(
             children: [
               Work(),
               Search(),
-              Work(),
+              Upload(),
               Work(),
               Profile(),
             ],
